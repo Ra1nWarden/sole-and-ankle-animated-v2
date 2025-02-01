@@ -80,11 +80,17 @@ const Content = styled(Dialog.Content)`
   width: 300px;
   height: 100%;
   padding: 24px 32px;
-  &[data-state="open"] {
-    animation: ${moveIn} 500ms 250ms both;
+
+  @media (preferes-reduced-motion: no-preference) {
+    &[data-state="open"] {
+      animation: ${moveIn} 500ms both ease-out;
+      animation-delay: 250ms;
+    }
   }
-  &[data-state="open"] div {
+
+  &[data-state="open"] ${ContentWrapper} {
     animation: ${fadeIn} 500ms 500ms both;
+    animation-delay: 500ms;
   }
 `;
 
