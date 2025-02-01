@@ -4,7 +4,6 @@ import styled, { keyframes } from "styled-components";
 import { WEIGHTS } from "../../constants";
 import { formatPrice, pluralize, isNewShoe } from "../../utils";
 import Spacer from "../Spacer";
-
 const ShoeCard = ({
   slug,
   name,
@@ -74,21 +73,23 @@ const Wrapper = styled.article``;
 const ImageWrapper = styled.div`
   position: relative;
   overflow: hidden;
-  & img {
-    transition: transform 500ms linear;
-    transform-origin: center 80%;
-  }
-  &:hover img {
-    transform: scale(1.1);
-    transform-origin: center 80%;
-    transition: transform 250ms linear;
-  }
+  border-radius: 16px 16px 4px 4px;
 `;
 
 const Image = styled.img`
-  display: inline-block;
+  display: block;
   width: 100%;
-  border-radius: 16px 16px 4px 4px;
+  transition: transform 500ms linear;
+  transform-origin: center 80%;
+  will-change: transform;
+
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    ${Link}:focus &,
+    ${Link}:hover & {
+      transform: scale(1.1);
+      transition: transform 250ms linear;
+    }
+  }
 `;
 
 const Row = styled.div`
