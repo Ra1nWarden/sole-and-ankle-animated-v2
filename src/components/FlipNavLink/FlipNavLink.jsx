@@ -6,7 +6,9 @@ function FlipNavLink({ children, ...delegated }) {
   return (
     <Wrapper>
       <NavLink {...delegated}>{children}</NavLink>
-      <HiddenNavLink {...delegated}>{children}</HiddenNavLink>
+      <HiddenNavLink aria-hidden={true} {...delegated}>
+        {children}
+      </HiddenNavLink>
     </Wrapper>
   );
 }
